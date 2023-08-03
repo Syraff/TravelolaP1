@@ -1,34 +1,36 @@
-("use strict");
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up(queryInterface, Sequelize) {
-    return queryInterface.createTable("Packages", {
+    return queryInterface.createTable("Bookings", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
-        type: Sequelize.STRING,
+      packageId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Packages",
+          key: "id",
+        },
       },
-      image: {
-        type: Sequelize.STRING,
+      orderDate: {
+        type: Sequelize.DATE,
       },
-      destination: {
-        type: Sequelize.STRING,
-      },
-      descriptions: {
-        type: Sequelize.TEXT,
-      },
-      price: {
+      participants: {
         type: Sequelize.INTEGER,
       },
-      startDate: {
-        type: Sequelize.DATE,
+      totalPayment: {
+        type: Sequelize.INTEGER,
       },
-      endDate: {
-        type: Sequelize.DATE,
+      transactionId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Transactions",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
@@ -41,6 +43,6 @@ module.exports = {
     });
   },
   down(queryInterface, Sequelize) {
-    return queryInterface.dropTable("Packages");
+    return queryInterface.dropTable("Bookings");
   },
 };
