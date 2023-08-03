@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Profile extends Model {
     /**
@@ -11,17 +9,41 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Profile.belongsTo(models.User);
+    }
+
+    get formatDateOfBirth() {
+      return this.dateOfBirth.toISOString().split("T")[0];
     }
   }
-  Profile.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    dateOfBirth: DataTypes.DATE,
-    phoneNumber: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Profile',
-  });
+  Profile.init(
+    {
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: { notEmpty: { msg: "First Name Required!" } },
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: { notEmpty: { msg: "Last Name Required!" } },
+      },
+      dateOfBirth: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        validate: { notEmpty: { msg: "Date Of Birth Required!" } },
+      },
+      phoneNumber: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: { notEmpty: { msg: "Phone Number Required!" } },
+      },
+      UserId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: "Profile",
+    }
+  );
   return Profile;
 };

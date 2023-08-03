@@ -25,13 +25,6 @@ module.exports = {
       totalPayment: {
         type: Sequelize.INTEGER,
       },
-      transactionId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Transactions",
-          key: "id",
-        },
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
