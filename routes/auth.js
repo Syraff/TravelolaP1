@@ -22,9 +22,6 @@ routerAuth.use(function (req, res, next) {
   }
 });
 
-//logout
-routerAuth.get("/logout", UserController.logout);
-
 //profile
 routerAuth.get("/profile", UserController.profileForm);
 
@@ -33,5 +30,8 @@ routerAuth.post("/profile/add", UserController.addProfile);
 
 // edit profile
 routerAuth.post("/profile/edit", UserController.editProfile);
+
+//logout
+routerAuth.get("/logout", UserController.logout);
 
 module.exports = routerAuth;

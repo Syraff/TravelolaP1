@@ -9,9 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Package.hasMany(models.Booking);
     }
 
-    get formatStartDate() {
+    formatStartDate() {
       return this.startDate.toISOString().split("T")[0];
     }
 

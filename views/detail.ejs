@@ -68,21 +68,27 @@
               <span class="text-black">/ People</span>
             </h4>
           </div>
-          <a
-            href="/package/booking/<%= data.id %>"
-            class="btn w-100 mb-5"
-            style="
-              background-color: rgba(255, 94, 31, 1);
-              font-weight: 500;
-              color: white;
-              padding: 10px 0;
-            "
-            >Booking</a
-          >
+          <form action="/package/booking/<%= data.id %>" method="post">
+            <div class="mb-3">
+              <label class="form-label">Participants</label>
+              <input type="number" name="participants" class="form-control" />
+            </div>
+            <input
+              type="submit"
+              value="Booking"
+              class="btn w-100 mb-5"
+              style="
+                background-color: rgba(255, 94, 31, 1);
+                font-weight: 500;
+                color: white;
+                padding: 10px 0;
+              "
+            />
+          </form>
           <p style="font-size: 18px; margin-bottom: 10px">
             Start Tour:
             <span class="text-danger fw-semibold"
-              ><%= data.formatStartDate %></span
+              ><%= data.formatStartDate() %></span
             >
           </p>
           <p style="font-size: 18px">

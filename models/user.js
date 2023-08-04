@@ -18,17 +18,26 @@ module.exports = (sequelize, DataTypes) => {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: { notEmpty: { msg: "Email Required!" } },
+        validate: {
+          notEmpty: { msg: "Email Required!" },
+          notNull: { msg: "Email Required!" },
+        },
       },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: { notEmpty: { msg: "Password Required!" } },
+        validate: {
+          notEmpty: { msg: "Password Required!" },
+          notNull: { msg: "Password Required!" },
+        },
       },
       role: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: { notEmpty: { msg: "Role Required!" } },
+        validate: {
+          notEmpty: { msg: "Role Required!" },
+          notNull: { msg: "Role Required!" },
+        },
       },
       activated: DataTypes.BOOLEAN,
     },

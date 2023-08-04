@@ -47,15 +47,15 @@ class Controller {
       .then((pkg) => {
         tour = pkg;
         return Booking.create({
-          participants,
+          participants: +participants,
           UserId: userId,
-          packageId: req.params.id,
+          PackageId: +req.params.id,
           orderDate: new Date(),
           totalPayment: tour.price * participants,
         });
       })
-      .then(() => {
-        res.send("Berhasil");
+      .then((data) => {
+        res.redirect(`/package/booking/checkout/${data.id}`);
       })
       .catch((err) => res.send(err));
   }

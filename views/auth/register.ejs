@@ -28,6 +28,9 @@
         method="post"
       >
         <h2 class="mb-4 fw-bold">Register</h2>
+        <% if (errors) { %> <% errors.split(",").forEach(err => { %>
+        <p class="mb-1" style="color: red">*<%= err %></p>
+        <% }) %> <% } %>
         <div class="d-flex gap-3">
           <div class="mb-3 w-100">
             <label class="form-label">Email</label>
@@ -50,7 +53,12 @@
             <option value="admin">Admin</option>
           </select>
         </div>
-        <input type="submit" value="Register" class="btn btn-primary w-100" />
+        <input
+          type="submit"
+          value="Register"
+          class="btn btn-primary w-100 mb-2"
+        />
+        <a href="/login" class="btn btn-outline-danger w-100">Login</a>
       </form>
     </div>
     <script

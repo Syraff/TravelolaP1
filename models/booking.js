@@ -9,11 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Booking.belongsTo(models.Package);
     }
   }
   Booking.init(
     {
-      packageId: DataTypes.INTEGER,
+      PackageId: DataTypes.INTEGER,
       orderDate: DataTypes.DATE,
       participants: {
         type: DataTypes.INTEGER,
