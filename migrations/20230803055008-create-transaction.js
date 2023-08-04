@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      packageId: {
+      PackageId: {
         type: Sequelize.INTEGER,
         references: {
           model: "Packages",
@@ -24,13 +24,6 @@ module.exports = {
       },
       totalPayment: {
         type: Sequelize.INTEGER,
-      },
-      transactionId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Transactions",
-          key: "id",
-        },
       },
       createdAt: {
         allowNull: false,
